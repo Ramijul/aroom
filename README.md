@@ -24,6 +24,8 @@
 
 ## Description
 
+**Aroom** - AirBnb replica. _Monorepo with NestJS Microservices and pnpm_
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
@@ -43,6 +45,14 @@ $ pnpm run start:dev
 
 # production mode
 $ pnpm run start:prod
+```
+
+## Running with docker-compose
+
+Run all containers including Mongo DB. Note that it has hot reloading enabled
+
+```
+docker compose up --build
 ```
 
 ## Test
