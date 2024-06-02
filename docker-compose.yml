@@ -1,0 +1,37 @@
+# dev mode
+services:
+  reservations:
+    build: 
+      context: .
+      dockerfile: ./apps/reservations/Dockerfile.dev
+    command: pnpm run start:dev reservations
+    depends_on:
+      - mongodb
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+      - ignore:/usr/src/app/node_modules
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/aroom
+    networks:
+      - aroom-network
+      
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-vol:/data/db
+    networks:
+      - aroom-network
+
+volumes:
+  ignore:
+  mongodb-vol:
+
+networks:
+  aroom-network:
+    driver: bridge
