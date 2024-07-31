@@ -18,6 +18,25 @@ services:
       - MONGODB_URI=mongodb://mongodb:27017/aroom
     networks:
       - aroom-network
+
+  auth:
+    build: 
+      context: .
+      dockerfile: ./apps/auth/Dockerfile.dev
+    command: pnpm run start:dev auth
+    depends_on:
+      - mongodb
+    ports:
+      - '3001:3000'
+    volumes:
+      - .:/usr/src/app
+      - ignore:/usr/src/app/node_modules
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/aroom
+    networks:
+      - aroom-network
       
   mongodb:
     image: mongo:latest
