@@ -1,4 +1,4 @@
-FROM node:alpine as build
+FROM node:18.19.1-alpine as build
 WORKDIR /usr/src/app
 COPY package.json ./
 COPY pnpm-lock.yaml ./
@@ -7,7 +7,7 @@ RUN pnpm install
 COPY . .
 RUN pnpm run build
 
-FROM node:alpine
+FROM node:18.19.1-alpine
 ARG NODE_ENV=production
 ENV NODE_ENV={NODE_ENV}
 WORKDIR /usr/src/app
@@ -15,5 +15,5 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 RUN npm install -g pnpm
 RUN pnpm install --prod
-COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/dist/apps/reservations ./dist/apps/reservations
 CMD ["node", "dist/apps/reservations/main"]
