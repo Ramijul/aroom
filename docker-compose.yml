@@ -13,7 +13,7 @@ services:
       - .:/usr/src/app
       - ignore:/usr/src/app/node_modules
     env_file:
-      - .env
+      - ./apps/reservations/.env
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/aroom
     networks:
@@ -32,7 +32,7 @@ services:
       - .:/usr/src/app
       - ignore:/usr/src/app/node_modules
     env_file:
-      - .env
+      - ./apps/auth/.env
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/aroom
     networks:
