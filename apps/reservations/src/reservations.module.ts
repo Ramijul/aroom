@@ -4,6 +4,7 @@ import { ReservationsController } from './reservations.controller';
 import { DatabaseModule, LoggerModule } from '@app/common';
 import { ReservationsRepository } from './reservations.repository';
 import { Reservation, ReservationSchema } from './models/reservation.schema';
+import { HealthCheckController } from './healthcheck.controller';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { Reservation, ReservationSchema } from './models/reservation.schema';
     ]),
     LoggerModule,
   ],
-  controllers: [ReservationsController],
+  controllers: [ReservationsController, HealthCheckController],
   providers: [ReservationsService, ReservationsRepository],
 })
 export class ReservationsModule {}
