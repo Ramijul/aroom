@@ -9,4 +9,6 @@ export class User extends AbstractDocument {
   password: string;
 }
 
+export interface PasswordExcludedUserDocument extends Omit<User, 'password'> {}
+
 export const UserSchema = SchemaFactory.createForClass(User);

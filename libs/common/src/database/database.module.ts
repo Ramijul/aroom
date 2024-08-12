@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ModelDefinition, MongooseModule } from '@nestjs/mongoose';
 
-// inject mongo connection uri from conif
+// inject mongo connection uri from config
 @Module({
   imports: [
     MongooseModule.forRootAsync({

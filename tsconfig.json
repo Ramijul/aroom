@@ -32,6 +32,7 @@
     "excludeDirectories": [
       "**/node_modules",
       "dist"
-    ]
+    ],
+    "excludeFiles": ["**spec.ts"]
   }
 }
