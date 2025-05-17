@@ -6,6 +6,7 @@ import { ReservationsRepository } from './reservations.repository';
 import { Reservation, ReservationSchema } from './models/reservation.schema';
 import { HealthCheckController } from './healthcheck.controller';
 import { ConfigModule } from '@nestjs/config';
+import { TestmodModule } from './testmod/testmod.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -26,6 +27,7 @@ import * as Joi from 'joi';
           .allow(null),
       }),
     }),
+    TestmodModule,
   ],
   controllers: [ReservationsController, HealthCheckController],
   providers: [ReservationsService, ReservationsRepository],
